@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play Giveaway</title>
+<style>body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
+}
+#verifyBox{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('https://image2url.com/r2/default/images/1774199641721-6d430be6-bee6-4b09-8552-5c5c6b2ee27f.jpeg') center/cover;
+  color:#00ffcc;
+  font-family:monospace;
+  padding:20px;
+  z-index:9999;
+  text-align:center;
+}
+  
+
+.verify-bar{
+  width:100%;
+  height:12px;
+  background:#222;
+  border-radius:10px;
+  margin:20px 0;
+  overflow:hidden;
+}
+
+.verify-progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00ffcc,#00c6ff);
+  transition:0.3s;
+}
+
+#verifyPercent{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+#verifyText{
+  margin-top:15px;
+  line-height:25px;
+}
+
+
+@keyframes pop{
+  from{transform:scale(0.7); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+.progress-bar{
+  width:100%;
+  height:10px;
+  background:#ddd;
+  border-radius:10px;
+  margin:10px 0;
+  overflow:hidden;
+}
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00c6ff,#0072ff);
+  transition:0.3s;
+}
+
+.task button{
+  width:100%;
+  margin:6px 0;
+  padding:12px;
+  border:none;
+  background:linear-gradient(90deg,#0072ff,#00c6ff);
+  color:#fff;
+  border-radius:12px;
+  font-size:15px;
+
+}
+
+.header{
+  background:#fff;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+}
+.top-video{
+  width:95%;
+  height:180px;
+  margin:10px auto;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.top-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:20px;
+}
+/* ===== TOP BANNER ===== */
+.top-banner {
+  overflow: hidden;
+  border-radius: 20px;
+  margin:10px auto;
+  width: 95%;
+  height: 180px;
+}
+.top-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== GRID ===== */
+.container{ max-width:340px; margin:auto; }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+.card{
+  background:#fff;
+  border-radius:10px;
+  padding:8px;
+  text-align:center;
+}
+
+.card img{
+  width:80px;
+  height:80px;
+  animation: float 3s infinite;
+}
+
+.btn{
+  background:#28a745;
+  color:#fff;
+  padding:6px;
+  border-radius:10px;
+  display:block;
+  margin-top:5px;
+  text-decoration:none;
+  animation: blink 1s infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:0.3}
+}
+
+/* ===== POPUP ===== */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+}
+.popup-content{
+  background:#fff;
+  padding:20px;
+  margin:120px auto;
+  width:90%;
+  max-width:300px;
+  border-radius:15px;
+  text-align:center;
+
+}
+.reward{
+  display:none;
+  margin-top:15px;
+  background:#28a745;
+  color:#fff;
+  padding:10px;
+  border-radius:10px;
+}
+
+/* ===== WINNER POPUP ===== */
+#winner-container { position: fixed; top: 0; right: 0; }
+.winner-popup {
+  position: fixed;
+  top: 20px;
+  right: -300px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.winner-popup.show { right:20px; }
+</style>
+</head>
+
+<body>
+
+<div class="header">🎁 Google Play Giveaway</div><video width="100%" controls autoplay muted loop playsinline preload="auto">
+  <source src="https://res.cloudinary.com/dr2xwfryv/video/upload/v1773923183/Video750.mp4" type="video/mp4">
+</video>
+
+
+<!-- BANNER -->
+<div class="top-banner">
+  <img src="https://i.postimg.cc/Df585zgf/file-0000000050a071fa80dbe90a7936d97d.png">
+</div>
+<div style="text-align:center; margin:10px;">
+  <button onclick="sharePage()" 
+    style="padding:10px 20px; border:none; border-radius:10px; background:#25D366; color:#fff; font-size:16px;">
+    📤 Share & Earn
+  </button>
+</div>
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://i.postimg.cc/XYY6VjSv/imresizer-3a425456715f8655b32d990b4b6e61dd.jpg">
+      <h3>💎1060</h3>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">GET</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/J0KDkrT7/images-(4).png">
+      <h3>💎5600</h3>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">GET</a>
+    </div>
+     
+    <div class="card">
+      <img src="https://www.nicepng.com/png/detail/973-9733667_google-play-gift-card-25-25-google-play.png">
+      <h3>₹250</h3>
+      <p>Gift Card</p>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">REDEEM</a>
+    </div>
+
+    <div class="card">
+      <img src="https://www.nicepng.com/png/detail/973-9733667_google-play-gift-card-25-25-google-play.png">
+      <h3>₹100</h3>
+      <p>Gift Card</p>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">REDEEM</a>
+    </div>
+
+    <div class="card">
+      <img src="https://www.nicepng.com/png/detail/973-9733667_google-play-gift-card-25-25-google-play.png">
+      <h3>₹500</h3>
+      <p>Gift Card</p>
+   <a href="javascript:void(0)" class="btn" onclick="openPopup()">REDEEM</a>
+    </div>
+
+    <div class="card">
+      <img src="https://www.nicepng.com/png/detail/973-9733667_google-play-gift-card-25-25-google-play.png">
+      <h3>₹50</h3>
+      <p>Gift Card</p>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">REDEEM</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+      <h3>Mystery Box</h3>
+      <p>Open Now</p>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">GET</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
+      <h3>Extra Life</h3>
+      <p>1 Life</p>
+<a href="javascript:void(0)" class="btn" onclick="openPopup()">GET</a>
+    </div>
+
+  </div>
+</div>
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <button onclick="document.getElementById('popup').style.display='none'">❌ Close</button>
+
+    <h2>🎯 Complete Tasks</h2>
+
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+    <p id="progress-text">0/3 Completed</p>
+    <div class="task">
+      <button onclick="completeTask(1,'https://omg10.com/4/10712422')">🔗 Task 1</button>
+      <button onclick="completeTask(2,'https://omg10.com/4/10632486')">📲 Task 2</button>
+      <button onclick="completeTask(3,'https://omg10.com/4/10635340')">🎮 Task 3</button>
+    </div>
+
+    <div class="reward" id="reward">
+      🎉 Reward Unlocked!<br><br>
+      <button onclick="claimReward()">Claim Now 🎁</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="winner-container"></div>
+<script>
+function submitEmail(){
+  let email = document.getElementById("userEmail").value;
+
+  if(email === "" || !email.includes("@")){
+    alert("Please enter valid email");
+    return;
+  }
+
+  // ✅ No Telegram, only message
+  document.getElementById("emailMsg").innerText =
+    "✅ Reward details sent to your email!";
+
+  // Optional redirect
+  setTimeout(()=>{
+    window.location.href = "https://example.com";
+  },2000);
+}
+  function openPopup(){
+  document.getElementById("popup").style.display="block";
+}
+
+let completedTasks = {1:false,2:false,3:false};
+function completeTask(id, link){
+  if(completedTasks[id]) return;
+
+  window.open(link, "_blank");
+  completedTasks[id]=true;
+
+  let btn = document.querySelectorAll(".task button")[id-1];
+  btn.innerText="Completed ✅";
+  btn.style.background="green";
+  btn.disabled=true;
+
+  updateProgress();
+
+  if(Object.values(completedTasks).filter(v=>v).length === 3){
+    document.getElementById("reward").style.display = "block";
+  }
+} // ✅ YEH BRACKET ADD KARO
+
+
+let claimed = false;
+
+function claimReward(){
+  if(claimed) return;
+  claimed = true;
+  document.getElementById("popup").style.display="none";
+  document.getElementById("verifyBox").style.display="block";
+  document.getElementById("verifyText").innerHTML = "Starting...";
+
+  let steps = [
+    "🔍 Checking Task 1...",
+    "🔍 Checking Task 2...",
+    "🔍 Checking Task 3...",
+    "📡 Connecting to server...",
+    "💰 Adding reward to account..."
+  ];
+
+  let percent = 0;
+  let stepIndex = 0;
+
+  let interval = setInterval(() => {
+
+    // progress increase
+    percent += 5;
+    document.getElementById("verifyProgress").style.width = percent + "%";
+    document.getElementById("verifyPercent").innerText = percent + "%";
+
+    // show steps
+    if(percent % 20 === 0 && stepIndex < steps.length){
+      document.getElementById("verifyText").innerHTML += "<br>" + steps[stepIndex];
+      stepIndex++;
+    }
+
+  
+// finish
+if(percent >= 100){
+  clearInterval(interval);
+
+  setTimeout(()=>{
+    document.getElementById("verifyText").innerHTML += "<br><br>🎉 email send";
+    
+    document.getElementById("emailSection").style.display = "block";
+
+  },1000);
+}
+  },200);
+}
+
+function updateProgress(){
+  let done = Object.values(completedTasks).filter(v=>v).length;
+
+  document.getElementById("progress").style.width=(done/3)*100+"%";
+  document.getElementById("progress-text").innerText=done+"/3 Completed";
+
+  if(done===3){
+    document.getElementById("reward").style.display="block";
+  }
+
+}const winnerQueue = [
+  {name:'Rahul Sharma', city:'Delhi', prize:'₹500'},
+  {name:'Priya Patel', city:'Mumbai', prize:'₹100'},
+  {name:'Amit Kumar', city:'Lucknow', prize:'5600 Diamonds'},
+  {name:'Anil Verma', city:'Pune', prize:'₹1000'},
+  {name:'Rohit Singh', city:'Jaipur', prize:'1060 Diamonds'},
+  {name:'Sneha Reddy', city:'Hyderabad', prize:'₹50'},
+  {name:'Vikas Yadav', city:'Patna', prize:'₹500'},
+  {name:'Pooja Gupta', city:'Kolkata', prize:'₹100'},
+  {name:'Karan Mehta', city:'Ahmedabad', prize:'5600 Diamonds'},
+  {name:'Neha Joshi', city:'Indore', prize:'₹1000'},
+  {name:'Arjun Nair', city:'Kochi', prize:'1060 Diamonds'},
+  {name:'Simran Kaur', city:'Chandigarh', prize:'₹50'},
+  {name:'Manish Tiwari', city:'Varanasi', prize:'₹500'},
+  {name:'Kavita Mishra', city:'Bhopal', prize:'₹100'},
+  {name:'Deepak Chauhan', city:'Noida', prize:'5600 Diamonds'},
+  {name:'Riya Das', city:'Guwahati', prize:'₹1000'},
+  {name:'Sanjay Pawar', city:'Nagpur', prize:'1060 Diamonds'},
+  {name:'Meena Iyer', city:'Chennai', prize:'₹50'},
+  {name:'Ajay Thakur', city:'Shimla', prize:'₹500'},
+  {name:'Nisha Khan', city:'Bangalore', prize:'₹100'}
+
+];
+let isShowing=false;
+function showNextWinner(){
+  if(isShowing || winnerQueue.length===0) return;
+  isShowing=true;
+
+  const w = winnerQueue.shift();
+  const popup = document.createElement("div");
+  popup.className="winner-popup";
+  let times = ["just now","1 min ago","2 min ago","5 min ago"];
+
+popup.innerText = `🎉 ${w.name} from ${w.city} won ${w.prize} (${times[Math.floor(Math.random()*times.length)]})`;
+  document.getElementById("winner-container").appendChild(popup);
+
+  setTimeout(()=>popup.classList.add("show"),50);
+
+  setTimeout(()=>{
+    popup.classList.remove("show");
+    setTimeout(()=>{
+      popup.remove();
+      isShowing=false;
+      showNextWinner();
+    },500);
+  },3000);
+}
+
+if(winnerQueue.length > 0){
+  setInterval(showNextWinner,4000);
+}
+function sharePage(){
+  let url = window.location.href;
+
+  if(navigator.share){
+    navigator.share({
+      title: "Google Play Giveaway 🎁",
+      text: "🔥 Free Reward lo abhi!",
+      url: url
+    });
+  } else {
+    let whatsapp = "https://wa.me/?text=" + encodeURIComponent(
+      "🔥 Free Reward 👉 " + url
+    );
+    window.open(whatsapp, "_blank");
+  }
+}
+</script>
+
+<div id="verifyBox">
+  <h2>🔄 Verifying Your Tasks...</h2>
+
+  <div class="verify-bar">
+    <div class="verify-progress" id="verifyProgress"></div>
+  </div>
+
+  <p id="verifyPercent">0%</p>
+  <div id="verifyText">Starting...</div>
+<div id="emailSection" style="display:none; margin-top:20px; text-align:center;">
+  <h3>📧 Enter Email to Receive Reward</h3>
+  <input type="email" id="userEmail" placeholder="Enter your email"
+    style="padding:10px; width:80%; border-radius:8px; border:none;">
+  <br><br>
+  <button onclick="submitEmail()"
+    style="padding:10px 20px; border:none; border-radius:10px; background:#00c6ff; color:#fff;">
+    Submit Email
+  </button>
+  <p id="emailMsg" style="margin-top:10px;"></p>
+</div>
+    </div>
+
+</body>
+</html> 
